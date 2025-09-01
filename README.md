@@ -1,4 +1,4 @@
-# React + Vite + TypeScript + Tailwind + TanStack Router + shadcn/ui
+# Nutricia
 
 A minimal, production-ready starter. Includes:
 
@@ -8,15 +8,38 @@ A minimal, production-ready starter. Includes:
 - shadcn/ui (manual setup + example Button)
 - ESLint (flat config) + Prettier
 - Husky + lint-staged
-- Legacy static page embedded at `/legacy`
 
-## Getting Started
+## Project Setup
 
-```bash
-pnpm i # or npm i / yarn
-pnpm dlx husky init
-pnpm dev
-```
+This project uses the following main tools and libraries:
+
+**Dependencies:**
+
+- react, react-dom
+- @tanstack/react-router
+- @radix-ui/react-slot
+- lucide-react
+- tailwindcss-animate
+- class-variance-authority, clsx
+- tailwind-merge
+
+**DevDependencies:**
+
+- typescript
+- vite
+- @vitejs/plugin-react
+- tailwindcss, autoprefixer, postcss
+- eslint, @typescript-eslint/\*, eslint-plugin-react-hooks, eslint-plugin-react-refresh
+- prettier, prettier-plugin-tailwindcss
+- husky, lint-staged
+
+### Common Commands
+
+- `npm run dev` — Start development server
+- `npm run build` — Build for production
+- `npm run preview` — Preview production build
+- `npm run lint` — Run ESLint
+- `npm run format` — Format code with Prettier
 
 ## Add more shadcn components
 
