@@ -20,17 +20,6 @@ export default function HomePage() {
             <Button variant="ghost">Ghost</Button>
             <Button variant="link">Link</Button>
          </div>
-
-         <ul className="list-disc pl-6 text-sm text-muted-foreground">
-            <li>
-               Try the <strong>About</strong> and <strong>Legacy</strong> pages
-               from the header.
-            </li>
-            <li>
-               Dark mode is supported via the <code>.dark</code> class on{' '}
-               <code>&lt;html&gt;</code>.
-            </li>
-         </ul>
       </section>
    );
 }

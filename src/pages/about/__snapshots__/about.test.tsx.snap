@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AboutPage > matches snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="prose dark:prose-invert max-w-none"
+  >
+    <h2
+      class="text-3xl font-bold tracking-tight"
+    >
+      About Page
+    </h2>
+  </section>
+</DocumentFragment>
+`;
