@@ -4,7 +4,20 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>React + Vite + Tailwind + Router + shadcn</title>
+      <script>
+         (() => {
+            try {
+               const stored = localStorage.getItem('theme'); // 'light' | 'dark'
+               const theme = stored === 'dark' ? 'dark' : 'light'; // default light
+               document.documentElement.classList.toggle(
+                  'dark',
+                  theme === 'dark'
+               );
+            } catch {}
+         })();
+      </script>
    </head>
+
    <body class="min-h-screen bg-background text-foreground">
       <div id="root"></div>
       <script type="module" src="/src/main.tsx"></script>

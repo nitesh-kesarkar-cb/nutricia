@@ -7,6 +7,7 @@ import {
 } from '@tanstack/react-router';
 import HomePage from '@/pages/home/home';
 import AboutPage from '@/pages/about/about';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 function Layout() {
    return (
@@ -16,13 +17,15 @@ function Layout() {
                <Link to="/" className="text-lg font-semibold">
                   Nutricia-Danone
                </Link>
-               <nav className="flex gap-4 text-sm">
+               <nav className="flex items-center justify-center gap-4 text-sm">
                   <Link to="/" className="[&.active]:font-semibold">
                      Home
                   </Link>
                   <Link to="/about" className="[&.active]:font-semibold">
                      About
                   </Link>
+                  {/* right: theme toggle */}
+                  <ThemeToggle />
                </nav>
             </div>
          </header>
