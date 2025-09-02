@@ -1,24 +1,19 @@
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 
 export default function HomePage() {
+   const { t } = useTranslation();
    return (
       <section className="space-y-6">
          <div>
             <h2 className="text-3xl font-bold tracking-tight">
-               React + Vite + Tailwind + Tanstack Router + shadcn
+               {t('home.title')}
             </h2>
-            <p className="mt-2 text-muted-foreground">
-               Production-ready boilerplate with routing, theming variables, and
-               shadcn Button.
-            </p>
+            <p className="mt-2 text-muted-foreground">{t('home.lead')}</p>
          </div>
 
          <div className="flex gap-3">
-            <Button>Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="link">Link</Button>
+            <Button>{t('home.buttons.primary')}</Button>
          </div>
       </section>
    );

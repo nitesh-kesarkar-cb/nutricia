@@ -11,6 +11,7 @@ node_modules
 dist
 coverage
 *.snap
+*__snapshots__*
 dist-ssr
 *.local
 

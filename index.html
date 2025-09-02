@@ -16,6 +16,19 @@
             } catch {}
          })();
       </script>
+      <script>
+         (() => {
+            try {
+               // 1) set theme (if you have that script already, keep it)
+               // 2) set language/dir with default 'en' (ltr)
+               const storedLocale = localStorage.getItem('locale'); // 'en' or 'ar'
+               const locale = storedLocale === 'ar' ? 'ar' : 'en';
+               const dir = locale === 'ar' ? 'rtl' : 'ltr';
+               document.documentElement.setAttribute('lang', locale);
+               document.documentElement.setAttribute('dir', dir);
+            } catch {}
+         })();
+      </script>
    </head>
 
    <body class="min-h-screen bg-background text-foreground">
