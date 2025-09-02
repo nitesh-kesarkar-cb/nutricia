@@ -1,0 +1,22 @@
+{
+   "brand": "Nutricia-Danone",
+   "nav": { "home": "Home", "about": "About" },
+   "home": {
+      "title": "React + Vite + Tailwind + TanStack Router + shadcn",
+      "lead": "Production-ready boilerplate with routing, theming, and shadcn Button.",
+      "buttons": {
+         "primary": "Primary",
+         "secondary": "Secondary",
+         "outline": "Outline",
+         "ghost": "Ghost",
+         "link": "Link"
+      }
+   },
+   "about": { "title": "About Page" },
+   "lang": {
+      "language": "Language",
+      "english": "English",
+      "arabic": "Arabic",
+      "change_language": "Change language"
+   }
+}

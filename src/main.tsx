@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from '@tanstack/react-router';
 import { router } from './router/router';
-import './styles/tailwind.css';
-import { ThemeProvider } from './theme/theme-provider';
+import { ThemeProvider } from '@/theme/theme-provider';
+import { LocaleProvider } from '@/i18n/locale-provider';
+import '@/styles/tailwind.css';
+import '@/i18n/i18n';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -13,8 +15,10 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
    <React.StrictMode>
-      <ThemeProvider>
-         <RouterProvider router={router} />
-      </ThemeProvider>
+      <LocaleProvider>
+         <ThemeProvider>
+            <RouterProvider router={router} />
+         </ThemeProvider>
+      </LocaleProvider>
    </React.StrictMode>
 );
