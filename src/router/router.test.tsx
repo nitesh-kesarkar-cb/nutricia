@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {
@@ -6,84 +7,97 @@ import {
    createMemoryHistory,
 } from '@tanstack/react-router';
 import { router as appRouter } from './router';
-import { ThemeProvider } from '@/theme/theme-provider'; // ⬅️ add provider
+import { vi } from 'vitest';
 
-// Helper to mount a fresh router with memory history + ThemeProvider
+/**
+ * Make t(key) return the key so we can assert on i18n constants
+ * without loading any translation files.
+ */
+vi.mock('react-i18next', () => ({
+   useTranslation: () => ({
+      t: (key: string) => key,
+   }),
+}));
+
+/** Stub UI bits not under test */
+vi.mock('@/components/theme-toggle/theme-toggle', () => ({
+   ThemeToggle: () => <button aria-label="Toggle theme" />,
+}));
+vi.mock('@/components/language-switcher/language-switcher', () => ({
+   LanguageSwitcher: () => <div data-testid="language-switcher" />,
+}));
+
+/** Helper: fresh router with memory history */
 function renderWithRoute(initial = '/') {
    const testRouter = createRouter({
       routeTree: appRouter.options.routeTree,
       history: createMemoryHistory({ initialEntries: [initial] }),
    });
-
-   const ui = render(
-      <ThemeProvider>
-         <RouterProvider router={testRouter} />
-      </ThemeProvider>
-   );
+   const ui = render(<RouterProvider router={testRouter} />);
    return { ...ui, router: testRouter };
 }
 
-describe('App Router', () => {
-   it('renders the layout header and brand link', async () => {
+describe('App Router (keys only)', () => {
+   it('renders brand and nav labels as i18n keys', async () => {
       renderWithRoute('/');
 
-      // Wait for initial match/transition
+      // Brand link shows the key `brand`
       expect(
-         await screen.findByRole('link', { name: /nutricia-danone/i })
+         await screen.findByRole('link', { name: 'brand' })
       ).toBeInTheDocument();
 
+      // Nav links show their keys
       expect(
-         await screen.findByRole('link', { name: /home/i })
+         await screen.findByRole('link', { name: 'nav.home' })
       ).toBeInTheDocument();
       expect(
-         await screen.findByRole('link', { name: /about/i })
+         await screen.findByRole('link', { name: 'nav.about' })
       ).toBeInTheDocument();
 
-      // Theme toggle is present (from Layout)
+      // Language switcher stub present
+      expect(screen.getByTestId('language-switcher')).toBeInTheDocument();
+
+      // Theme toggle stub present
       expect(
-         await screen.findByRole('button', { name: /toggle theme/i })
+         screen.getByRole('button', { name: /toggle theme/i })
       ).toBeInTheDocument();
    });
 
-   it('renders HomePage at "/" and marks Home active', async () => {
+   it('renders Home route and marks Home active', async () => {
       renderWithRoute('/');
 
-      // Heading from HomePage
+      // Heading from HomePage should be the key
       expect(
-         await screen.findByRole('heading', {
-            level: 2,
-            name: /react \+ vite \+ tailwind \+ tanstack router \+ shadcn/i,
-         })
+         await screen.findByRole('heading', { level: 2, name: 'home.title' })
       ).toBeInTheDocument();
 
-      // Active link settles asynchronously
-      const homeLink = await screen.findByRole('link', { name: /home/i });
+      const homeLink = await screen.findByRole('link', { name: 'nav.home' });
       await waitFor(() =>
          expect(homeLink).toHaveAttribute('aria-current', 'page')
       );
    });
 
-   it('navigates to About via link click and marks it active', async () => {
+   it('navigates to About and marks About active', async () => {
       renderWithRoute('/');
 
-      const aboutLink = await screen.findByRole('link', { name: /about/i });
+      const aboutLink = await screen.findByRole('link', { name: 'nav.about' });
       await userEvent.click(aboutLink);
 
       expect(
-         await screen.findByRole('heading', { level: 2, name: /about page/i })
+         await screen.findByRole('heading', { level: 2, name: 'about.title' })
       ).toBeInTheDocument();
 
       await waitFor(() =>
          expect(aboutLink).toHaveAttribute('aria-current', 'page')
       );
-      const homeLink = await screen.findByRole('link', { name: /home/i });
+      const homeLink = await screen.findByRole('link', { name: 'nav.home' });
       expect(homeLink).not.toHaveAttribute('aria-current', 'page');
    });
 
-   it('renders AboutPage when starting at "/about"', async () => {
+   it('directs to About when starting at /about', async () => {
       renderWithRoute('/about');
       expect(
-         await screen.findByRole('heading', { level: 2, name: /about page/i })
+         await screen.findByRole('heading', { level: 2, name: 'about.title' })
       ).toBeInTheDocument();
    });
 });
