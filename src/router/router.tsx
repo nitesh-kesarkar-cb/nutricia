@@ -5,8 +5,8 @@ import {
    Outlet,
    Link,
 } from '@tanstack/react-router';
-import HomePage from '@/pages/home';
-import AboutPage from '@/pages/about';
+import HomePage from '@/pages/home/home';
+import AboutPage from '@/pages/about/about';
 
 function Layout() {
    return (
