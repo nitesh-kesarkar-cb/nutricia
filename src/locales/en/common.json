@@ -1,9 +1,9 @@
 {
-   "brand": "Nutricia-Danone",
+   "brand": "Nutricia",
    "nav": { "home": "Home", "about": "About" },
    "home": {
-      "title": "React + Vite + Tailwind + TanStack Router + shadcn",
-      "lead": "Production-ready boilerplate with routing, theming, and shadcn Button.",
+      "title": "Home Page",
+      "lead": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "buttons": {
          "primary": "Primary",
          "secondary": "Secondary",
