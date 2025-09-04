@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-export default function AboutPage() {
+export default function ShopPage() {
    const { t } = useTranslation();
 
-   return <h2>{t('about.title')}</h2>;
+   return <h2>{t('shop.title')}</h2>;
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useSearch } from '@tanstack/react-router';
 import { cn } from '@/lib/utils';
+import { Button } from './ui/button';
 
 const ResetPasswordForm: React.FC = () => {
    const { t } = useTranslation();
@@ -70,6 +71,7 @@ const ResetPasswordForm: React.FC = () => {
                   <input
                      type="password"
                      id="password"
+                     placeholder="password"
                      value={password}
                      onChange={(e) => setPassword(e.target.value)}
                      required
@@ -88,6 +90,7 @@ const ResetPasswordForm: React.FC = () => {
                   <input
                      type="password"
                      id="confirmPassword"
+                     placeholder="confirm password"
                      value={confirmPassword}
                      onChange={(e) => setConfirmPassword(e.target.value)}
                      required
@@ -101,12 +104,14 @@ const ResetPasswordForm: React.FC = () => {
                      <p>{error}</p>
                   </div>
                )}
-               <button
+               <Button
                   type="submit"
-                  className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  variant="default"
+                  size="sm"
+                  className="flex w-full justify-center rounded-md border border-transparent"
                >
                   {t('auth.resetPassword')}
-               </button>
+               </Button>
             </>
          )}
       </form>

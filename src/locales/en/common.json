@@ -1,6 +1,12 @@
 {
+   "brand-mini": "N",
    "brand": "Nutricia",
-   "nav": { "home": "Home", "about": "About" },
+   "nav": {
+      "home": "Home",
+      "about": "About",
+      "shop": "Shop",
+      "contact": "Contact"
+   },
    "home": {
       "title": "Home Page",
       "lead": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -13,6 +19,8 @@
       }
    },
    "about": { "title": "About Page" },
+   "shop": { "title": "Shop Page" },
+   "contact": { "title": "Contact Page" },
    "lang": {
       "language": "Language",
       "english": "English",
