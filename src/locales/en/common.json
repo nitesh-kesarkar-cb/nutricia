@@ -18,5 +18,20 @@
       "english": "English",
       "arabic": "Arabic",
       "change_language": "Change language"
+   },
+   "auth": {
+      "forgotPasswordError": "Error in sending reset password email",
+      "emailNotFound": "Email not found",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot Password?",
+      "receivePassword": "Receive Password",
+      "alreadyHaveAnAccount": "Already have an account?",
+      "login": "Login",
+      "description": "Enter your email to receive your password",
+      "forgotPasswordSuccess": "If the email exists, a reset link has been sent",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "resetPassword": "Reset Password"
    }
 }
