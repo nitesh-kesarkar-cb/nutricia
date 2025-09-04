@@ -2,62 +2,91 @@ import {
    createRootRoute,
    createRoute,
    createRouter,
-   Outlet,
-   Link,
+   Navigate,
 } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
 import HomePage from '@/pages/home/home';
 import AboutPage from '@/pages/about/about';
-import { ThemeToggle } from '@/components/theme-toggle/theme-toggle';
-import { LanguageSwitcher } from '@/components/language-switcher/language-switcher';
+import AuthLayout from '../layouts/auth-layout';
+import LoginForm from '@/components/login-form';
+import SignupForm from '@/components/signup-form';
+import ForgotPasswordForm from '@/components/forgot-password-form';
+import ResetPasswordForm from '@/components/reset-password-form';
+import AppLayout from '../layouts/app-layout';
+import ShopPage from '@/pages/shop/shop';
+import ContactPage from '@/pages/contact/contact';
 
-function Layout() {
-   const { t } = useTranslation();
+const rootRoute = createRootRoute();
 
-   return (
-      <div className="min-h-screen">
-         <header className="border-b">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-               <Link to="/" className="text-lg font-semibold">
-                  {t('brand')}
-               </Link>
-               <nav className="flex items-center justify-center gap-4 text-sm">
-                  <Link to="/" className="[&.active]:font-semibold">
-                     {t('nav.home')}
-                  </Link>
-                  <Link to="/about" className="[&.active]:font-semibold">
-                     {t('nav.about')}
-                  </Link>
-                  <LanguageSwitcher />
-                  <ThemeToggle />
-               </nav>
-            </div>
-         </header>
-         <main className="mx-auto max-w-7xl px-4 py-8">
-            <Outlet />
-         </main>
-      </div>
-   );
-}
-
-const rootRoute = createRootRoute({ component: Layout });
 const indexRoute = createRoute({
    getParentRoute: () => rootRoute,
    path: '/',
-   component: HomePage,
+   component: () => <Navigate to="/home" />,
 });
+
+const homeRoute = createRoute({
+   getParentRoute: () => rootRoute,
+   path: '/home',
+   component: () => <AppLayout children={<HomePage />} />,
+});
+
 const aboutRoute = createRoute({
    getParentRoute: () => rootRoute,
    path: '/about',
-   component: AboutPage,
+   component: () => <AppLayout children={<AboutPage />} />,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, aboutRoute]);
+const contactRoute = createRoute({
+   getParentRoute: () => rootRoute,
+   path: '/contact',
+   component: () => <AppLayout children={<ContactPage />} />,
+});
+
+const shopRoute = createRoute({
+   getParentRoute: () => rootRoute,
+   path: '/shop',
+   component: () => <AppLayout children={<ShopPage />} />,
+});
+
+const loginRoute = createRoute({
+   getParentRoute: () => rootRoute,
+   path: '/auth/login',
+   component: () => <AuthLayout FormComponent={LoginForm} />,
+});
+
+const signupRoute = createRoute({
+   getParentRoute: () => rootRoute,
+   path: '/auth/signup',
+   component: () => <AuthLayout FormComponent={SignupForm} />,
+});
+
+const forgotPasswordRoute = createRoute({
+   getParentRoute: () => rootRoute,
+   path: '/auth/forgot-password',
+   component: () => <AuthLayout FormComponent={ForgotPasswordForm} />,
+});
+
+const resetPasswordRoute = createRoute({
+   getParentRoute: () => rootRoute,
+   path: '/auth/reset-password',
+   component: () => <AuthLayout FormComponent={ResetPasswordForm} />,
+});
+
+const routeTree = rootRoute.addChildren([
+   indexRoute,
+   aboutRoute,
+   loginRoute,
+   signupRoute,
+   forgotPasswordRoute,
+   resetPasswordRoute,
+   shopRoute,
+   contactRoute,
+   homeRoute,
+]);
 
 export const router = createRouter({ routeTree });
 
-declare module '@tanstack/react-router' {
-   interface Register {
-      router: typeof router;
-   }
-}
+// declare module '@tanstack/react-router' {
+//    interface Register {
+//       router: typeof router;
+//    }
+// }

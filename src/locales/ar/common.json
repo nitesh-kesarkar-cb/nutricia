@@ -1,22 +1,45 @@
 {
-   "brand": "نوترشا",
-   "nav": { "home": "الصفحة الرئيسية", "about": "حول" },
+   "brand-mini": "ن",
+   "brand": "نوتريشيا",
+   "nav": {
+      "home": "الرئيسية",
+      "about": "من نحن",
+      "shop": "المتجر",
+      "contact": "اتصل بنا"
+   },
    "home": {
       "title": "الصفحة الرئيسية",
-      "lead": "لوريم إيبسوم دولور سيت أميت ، تعديله.",
+      "lead": "لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبيسيسينغ إليت.",
       "buttons": {
          "primary": "أساسي",
          "secondary": "ثانوي",
-         "outline": "معالم",
+         "outline": "مخطط",
          "ghost": "شبح",
          "link": "رابط"
       }
    },
-   "about": { "title": "صفحة عن" },
+   "about": { "title": "صفحة من نحن" },
+   "shop": { "title": "صفحة المتجر" },
+   "contact": { "title": "صفحة الاتصال" },
    "lang": {
       "language": "اللغة",
       "english": "الإنجليزية",
       "arabic": "العربية",
       "change_language": "تغيير اللغة"
+   },
+   "auth": {
+      "forgotPasswordError": "حدث خطأ في إرسال بريد إعادة تعيين كلمة المرور",
+      "emailNotFound": "البريد الإلكتروني غير موجود",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "receivePassword": "استلام كلمة المرور",
+      "alreadyHaveAnAccount": "هل لديك حساب بالفعل؟",
+      "login": "تسجيل الدخول",
+      "description": "أدخل بريدك الإلكتروني لاستلام كلمة المرور",
+      "forgotPasswordSuccess": "إذا كان البريد موجودًا، فقد تم إرسال رابط إعادة التعيين",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "resetPassword": "إعادة تعيين كلمة المرور"
    }
 }
