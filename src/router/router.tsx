@@ -7,13 +7,13 @@ import {
 import HomePage from '@/pages/home/home';
 import AboutPage from '@/pages/about/about';
 import AuthLayout from '../layouts/auth-layout';
-import LoginForm from '@/components/login-form';
-import SignupForm from '@/components/signup-form';
 import ForgotPasswordForm from '@/components/forgot-password-form';
 import ResetPasswordForm from '@/components/reset-password-form';
 import AppLayout from '../layouts/app-layout';
 import ShopPage from '@/pages/shop/shop';
 import ContactPage from '@/pages/contact/contact';
+import SignInPage from '@/pages/sign-in/sign-in';
+import SignUpPage from '@/pages/sign-up/sign-up';
 
 const rootRoute = createRootRoute();
 
@@ -46,17 +46,16 @@ const shopRoute = createRoute({
    path: '/shop',
    component: () => <AppLayout children={<ShopPage />} />,
 });
-
-const loginRoute = createRoute({
+const signInRoute = createRoute({
    getParentRoute: () => rootRoute,
-   path: '/auth/login',
-   component: () => <AuthLayout FormComponent={LoginForm} />,
+   path: '/sign-in',
+   component: () => <SignInPage />,
 });
 
-const signupRoute = createRoute({
+const signUpRoute = createRoute({
    getParentRoute: () => rootRoute,
-   path: '/auth/signup',
-   component: () => <AuthLayout FormComponent={SignupForm} />,
+   path: '/sign-up',
+   component: () => <SignUpPage />,
 });
 
 const forgotPasswordRoute = createRoute({
@@ -74,8 +73,8 @@ const resetPasswordRoute = createRoute({
 const routeTree = rootRoute.addChildren([
    indexRoute,
    aboutRoute,
-   loginRoute,
-   signupRoute,
+   signInRoute,
+   signUpRoute,
    forgotPasswordRoute,
    resetPasswordRoute,
    shopRoute,

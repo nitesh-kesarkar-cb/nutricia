@@ -1,3 +1,9 @@
+import {
+   SignedIn,
+   SignedOut,
+   SignInButton,
+   UserButton,
+} from '@clerk/clerk-react';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { useTranslation } from 'react-i18next';
 import {
@@ -34,14 +40,6 @@ const menus = [
 
 const Sidebar: React.FC = () => {
    const { t } = useTranslation();
-   const navigate = useNavigate();
-
-   const handleLogout = () => {
-      console.log('User logged out');
-      setTimeout(() => {
-         navigate({ to: '/auth/login' });
-      }, 300);
-   };
 
    return (
       <div className="flex h-full flex-col justify-between bg-gray-800 text-white">
@@ -81,12 +79,9 @@ const Sidebar: React.FC = () => {
                   <span className="ml-2">John Doe</span>
                </div>
                <div>
-                  <button
-                     className="text-gray-400 transition-colors hover:text-white"
-                     onClick={handleLogout}
-                  >
-                     <FaSignOutAlt />
-                  </button>
+                  <SignedIn>
+                     <UserButton />
+                  </SignedIn>
                </div>
             </div>
          </div>
